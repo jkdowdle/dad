@@ -113,7 +113,7 @@ const IndexPage = () => (
                   </Control>
                 </Field>
 
-                <div data-netlify-recaptcha></div>
+                <div data-netlify-recaptcha="true"></div>
 
                 <br />
 
