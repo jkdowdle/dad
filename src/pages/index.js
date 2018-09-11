@@ -1,7 +1,4 @@
 import React from 'react'
-
-import Layout from '../components/layout'
-
 import {
   Field,
   Label,
@@ -9,8 +6,6 @@ import {
   Input,
   Select,
   TextArea,
-  Checkbox,
-  Radio,
   Button,
   Container,
   Tile,
@@ -18,9 +13,13 @@ import {
   Box,
 } from 'bloomer'
 
+import Layout from '../components/layout'
+
+import './index.css'
+
 const IndexPage = () => (
   <Layout>
-    <Container>
+    <Container id="home-page">
       <Tile isAncestor style={{ marginTop: '-8rem' }}>
         <Tile
           isChild
@@ -28,7 +27,12 @@ const IndexPage = () => (
             <Box {...props}>
               <Subtitle isSize={4}>Let's get started.</Subtitle>
 
-              <form style={{ marginBottom: 0 }}>
+              <form
+                name="test-form-one"
+                method="POST"
+                data-netlify="true"
+                style={{ marginBottom: 0 }}
+              >
                 <Field>
                   <Label htmlFor="name">Name</Label>
                   <Control>
@@ -60,13 +64,7 @@ const IndexPage = () => (
                 <Field>
                   <Label htmlFor="city">City</Label>
                   <Control>
-                    <Input
-                      id="city"
-                      name="city"
-                      required
-                      type="text"
-                      required
-                    />
+                    <Input id="city" name="city" required type="text" />
                   </Control>
                 </Field>
 
@@ -115,15 +113,17 @@ const IndexPage = () => (
                   </Control>
                 </Field>
 
+                <br />
+
                 <Field>
-                  <Control>
+                  <Control style={{ textAlign: 'right' }}>
                     <Button
+                      id="submit-btn"
                       style={{
                         color: '#fff',
                         backgroundColor: '#ff5722',
                         borderColor: 'transparent',
                       }}
-                      isFullWidth
                     >
                       Submit
                     </Button>

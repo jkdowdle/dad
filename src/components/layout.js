@@ -51,8 +51,7 @@ const Layout = ({ children }) => (
                   <p>Dad's Awesome Loans</p>
                   <Content isSize="small">
                     <p>
-                      The source code is licensed under{' '}
-                      <a target="_blank">MIT</a>.
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     </p>
                   </Content>
                 </Column>

@@ -1,0 +1,18 @@
+/* #submit-btn {
+  width: 100%;
+}
+ */
+
+@media screen and (min-width: 1280px) {
+  #home-page.container {
+    width: 720px;
+    max-width: 720px;
+  }
+}
+
+@media screen and (min-width: 1088px) {
+  #home-page.container {
+    width: 720px;
+    max-width: 720px;
+  }
+}

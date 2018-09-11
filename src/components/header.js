@@ -1,12 +1,15 @@
 import React from 'react'
-import { Link, Img } from 'gatsby'
+import { Link } from 'gatsby'
 import { Hero, HeroBody, Container, Title, Button, Subtitle } from 'bloomer'
 
 import backgroundImage from '../images/backlit-clouds-dark.jpg'
 import './header.css'
 
 const Header = () => (
-  <Hero isColor="danger">
+  <Hero
+    isColor="danger"
+    style={{ backgroundImage: `url("${backgroundImage}")` }}
+  >
     <HeroBody>
       <Container>
         <Title isSize={3}>Dad's Awesome Loans </Title>
