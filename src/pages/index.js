@@ -113,12 +113,15 @@ const IndexPage = () => (
                   </Control>
                 </Field>
 
+                <div data-netlify-recaptcha></div>
+
                 <br />
 
                 <Field>
                   <Control style={{ textAlign: 'right' }}>
                     <Button
                       id="submit-btn"
+                      type="submit"
                       style={{
                         color: '#fff',
                         backgroundColor: '#ff5722',
