@@ -12,6 +12,7 @@ import {
   Subtitle,
   Box,
 } from 'bloomer'
+import 'whatwg-fetch' // Fetch Polyfill
 
 import Layout from '../components/layout'
 
@@ -56,9 +57,11 @@ const handleSubmit = event => {
     additionalInfo,
   })
 
-  fetch("/?no-cache=1", {
-    "body": encoded
-  });
+  fetch('/?no-cache=1', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encoded,
+  })
   // window.event = event.nativeEvent
 }
 
