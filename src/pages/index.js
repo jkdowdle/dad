@@ -17,6 +17,51 @@ import Layout from '../components/layout'
 
 import './index.css'
 
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
+
+const handleSubmit = event => {
+  event.preventDefault()
+  event.persist()
+
+  console.log(event)
+
+  const target = event.nativeEvent.target
+
+  const {
+    name,
+    company,
+    phone,
+    email,
+    city,
+    state,
+    loanAmount,
+    estimatedCollateral,
+    additionalInfo,
+  } = target
+
+  const encoded = encode({
+    'form-name': 'test-form-one',
+    name,
+    company,
+    phone,
+    email,
+    city,
+    state,
+    loanAmount,
+    estimatedCollateral,
+    additionalInfo,
+  })
+
+  fetch("/?no-cache=1", {
+    "body": encoded
+  });
+  // window.event = event.nativeEvent
+}
+
 const IndexPage = () => (
   <Layout>
     <Container id="home-page">
@@ -32,6 +77,7 @@ const IndexPage = () => (
                 method="POST"
                 data-netlify="true"
                 style={{ marginBottom: 0 }}
+                onSubmit={handleSubmit}
               >
                 <Field>
                   <Label htmlFor="name">Name</Label>
@@ -113,7 +159,7 @@ const IndexPage = () => (
                   </Control>
                 </Field>
 
-                <div data-netlify-recaptcha="true"></div>
+                <div data-netlify-recaptcha="true" />
 
                 <br />
 
