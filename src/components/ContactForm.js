@@ -40,7 +40,7 @@ export default class ContactForm extends Component {
               <Box {...props}>
                 <Subtitle isSize={4}>Let's get started.</Subtitle>
 
-                <Form onSubmit={input => console.log('input', input)}>
+                <Form onSubmit={this.onSubmit}>
                   {({ handleSubmit }) => (
                     <form
                       name="test-form-one"
