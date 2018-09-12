@@ -6,12 +6,14 @@
   "dependencies": {
     "bloomer": "^0.6.3",
     "bulma": "^0.7.1",
+    "final-form": "^4.10.0",
     "gatsby": "next",
     "gatsby-plugin-manifest": "next",
     "gatsby-plugin-offline": "next",
     "gatsby-plugin-react-helmet": "next",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-final-form": "^3.6.5",
     "react-helmet": "^5.2.0"
   },
   "keywords": [
