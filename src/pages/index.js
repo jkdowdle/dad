@@ -12,7 +12,7 @@ import {
   Subtitle,
   Box,
 } from 'bloomer'
-import 'whatwg-fetch' // Fetch Polyfill
+// import 'whatwg-fetch' // Fetch Polyfill
 
 import Layout from '../components/layout'
 
