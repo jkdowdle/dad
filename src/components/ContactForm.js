@@ -22,10 +22,10 @@ const encode = data => {
 
 export default class ContactForm extends Component {
   onSubmit = (input, form) => {
-    const body = {
+    const body = encode({
       'form-name': 'test-form-one',
       ...input,
-    }
+    })
 
     return fetch('/?no-cache=1', {
       method: 'POST',
