@@ -14,10 +14,11 @@ import {
   Box,
 } from 'bloomer'
 
-const encode = data =>
-  Object.keys(data)
+const encode = data => {
+  return Object.keys(data)
     .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
     .join('&')
+}
 
 export default class ContactForm extends Component {
   onSubmit = (input, form) => {
@@ -55,12 +56,27 @@ export default class ContactForm extends Component {
                       </Subtitle>
                       <form
                         name="test-form-one"
-                        // method="POST"
                         data-netlify="true"
+                        netlify-honeypot="bot-field"
+                        hidden
+                      >
+                        <input name="name" />
+                        <input name="company" />
+                        <input name="phone" />
+                        <input name="email" />
+                        <input name="city" />
+                        <input name="state" />
+                        <input name="loanAmount" />
+                        <input name="estimatedCollateral" />
+                        <textarea name="additionalInfo" />
+                      </form>
+                      <form
+                        name="test-form-one"
+                        // method="POST"
+                        // data-netlify="true"
                         style={{ marginBottom: 0 }}
                         onSubmit={handleSubmit}
                       >
-                        <input name="name" hidden />
                         <Field name="name">
                           {({ input }) => (
                             <FormControl>
@@ -77,7 +93,6 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
-                        <input name="company" hidden />
                         <Field name="company">
                           {({ input }) => (
                             <FormControl>
@@ -94,7 +109,6 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
-                        <input name="phone" hidden />
                         <Field name="phone">
                           {({ input }) => (
                             <FormControl>
@@ -111,7 +125,6 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
-                        <input name="email" hidden />
                         <Field name="email">
                           {({ input }) => (
                             <FormControl>
@@ -128,7 +141,6 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
-                        <input name="city" hidden />
                         <Field name="city">
                           {({ input }) => (
                             <FormControl>
@@ -145,7 +157,6 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
-                        <input name="state" hidden />
                         <Field name="state">
                           {({ input }) => (
                             <FormControl>
@@ -167,7 +178,6 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
-                        <input name="loanAmount" hidden />
                         <Field name="loanAmount">
                           {({ input }) => (
                             <FormControl>
@@ -186,7 +196,6 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
-                        <input name="estimatedCollateral" hidden />
                         <Field name="estimatedCollateral">
                           {({ input }) => (
                             <FormControl>
@@ -205,7 +214,6 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
-                        <input name="additionalInfo" hidden />
                         <Field name="additionalInfo">
                           {({ input }) => (
                             <FormControl>
