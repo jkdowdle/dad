@@ -20,15 +20,22 @@ const encode = data =>
     .join('&')
 
 export default class ContactForm extends Component {
-  onSubmit = input => {
+  onSubmit = (input, form) => {
+    // console.log('submitted', form)
+    const a = {
+      'form-name': 'test-form-one',
+      ...input,
+    }
+    console.log('a', a)
+
+    const b = encode(a)
+
+    console.log('b', b)
     return fetch('/?no-cache=1', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': 'test-form-one',
-        ...input,
-      }),
-    })
+      body: b,
+    }).then(form.reset)
   }
   render() {
     return (
@@ -38,198 +45,196 @@ export default class ContactForm extends Component {
             isChild
             render={props => (
               <Box {...props}>
-                <Subtitle isSize={4}>Let's get started.</Subtitle>
-
                 <Form onSubmit={this.onSubmit}>
-                  {({ handleSubmit }) => (
-                    <form
-                      name="test-form-one"
-                      // method="POST"
-                      data-netlify="true"
-                      style={{ marginBottom: 0 }}
-                      onSubmit={handleSubmit}
-                    >
-                      <Field name="name">
-                        {({ input }) => (
-                          <FormControl>
-                            <Label htmlFor={input.name}>Name</Label>
-                            <Control>
-                              <Input
-                                id={input.name}
-                                name={input.name}
-                                type="text"
-                                {...input}
-                              />
-                            </Control>
-                          </FormControl>
-                        )}
-                      </Field>
+                  {({ handleSubmit, submitSucceeded }) => (
+                    <>
+                      <Subtitle isSize={4}>
+                        {submitSucceeded
+                          ? 'Thank you! We will be in touch'
+                          : "Let's get started."}
+                      </Subtitle>
+                      <form
+                        name="test-form-one"
+                        // method="POST"
+                        data-netlify="true"
+                        style={{ marginBottom: 0 }}
+                        onSubmit={handleSubmit}
+                      >
+                        <Field name="name">
+                          {({ input }) => (
+                            <FormControl>
+                              <Label htmlFor={input.name}>Name</Label>
+                              <Control>
+                                <Input
+                                  id={input.name}
+                                  name={input.name}
+                                  type="text"
+                                  {...input}
+                                />
+                              </Control>
+                            </FormControl>
+                          )}
+                        </Field>
 
-                      <Field name="company">
-                        {({ input }) => (
-                          <FormControl>
-                            <Label htmlFor={input.name}>Company</Label>
-                            <Control>
-                              <Input
-                                id={input.name}
-                                name={input.name}
-                                required
-                                type="text"
-                                {...input}
-                              />
-                            </Control>
-                          </FormControl>
-                        )}
-                      </Field>
+                        <Field name="company">
+                          {({ input }) => (
+                            <FormControl>
+                              <Label htmlFor={input.name}>Company</Label>
+                              <Control>
+                                <Input
+                                  id={input.name}
+                                  name={input.name}
+                                  type="text"
+                                  {...input}
+                                />
+                              </Control>
+                            </FormControl>
+                          )}
+                        </Field>
 
-                      <Field name="phone">
-                        {({ input }) => (
-                          <FormControl>
-                            <Label htmlFor={input.name}>Phone Number</Label>
-                            <Control>
-                              <Input
-                                id={input.name}
-                                name={input.name}
-                                required
-                                type="text"
-                                {...input}
-                              />
-                            </Control>
-                          </FormControl>
-                        )}
-                      </Field>
+                        <Field name="phone">
+                          {({ input }) => (
+                            <FormControl>
+                              <Label htmlFor={input.name}>Phone Number</Label>
+                              <Control>
+                                <Input
+                                  id={input.name}
+                                  name={input.name}
+                                  type="text"
+                                  {...input}
+                                />
+                              </Control>
+                            </FormControl>
+                          )}
+                        </Field>
 
-                      <Field name="email">
-                        {({ input }) => (
-                          <FormControl>
-                            <Label htmlFor={input.name}>Email</Label>
-                            <Control>
-                              <Input
-                                id={input.name}
-                                name={input.name}
-                                required
-                                type="email"
-                                {...input}
-                              />
-                            </Control>
-                          </FormControl>
-                        )}
-                      </Field>
+                        <Field name="email">
+                          {({ input }) => (
+                            <FormControl>
+                              <Label htmlFor={input.name}>Email</Label>
+                              <Control>
+                                <Input
+                                  id={input.name}
+                                  name={input.name}
+                                  type="email"
+                                  {...input}
+                                />
+                              </Control>
+                            </FormControl>
+                          )}
+                        </Field>
 
-                      <Field name="city">
-                        {({ input }) => (
-                          <FormControl>
-                            <Label htmlFor={input.name}>City</Label>
-                            <Control>
-                              <Input
-                                id={input.name}
-                                name={input.name}
-                                required
-                                type="text"
-                                {...input}
-                              />
-                            </Control>
-                          </FormControl>
-                        )}
-                      </Field>
+                        <Field name="city">
+                          {({ input }) => (
+                            <FormControl>
+                              <Label htmlFor={input.name}>City</Label>
+                              <Control>
+                                <Input
+                                  id={input.name}
+                                  name={input.name}
+                                  type="text"
+                                  {...input}
+                                />
+                              </Control>
+                            </FormControl>
+                          )}
+                        </Field>
 
-                      <Field name="state">
-                        {({ input }) => (
-                          <FormControl>
-                            <Label htmlFor={input.name}>State</Label>
-                            <Control>
-                              <Select
-                                id={input.name}
-                                name={input.name}
-                                required
-                                isFullWidth
-                                {...input}
-                              >
-                                <option>Utah</option>
-                                <option>Nevada</option>
-                                <option>Idaho</option>
-                                <option>Arizona</option>
-                              </Select>
-                            </Control>
-                          </FormControl>
-                        )}
-                      </Field>
+                        <Field name="state">
+                          {({ input }) => (
+                            <FormControl>
+                              <Label htmlFor={input.name}>State</Label>
+                              <Control>
+                                <Select
+                                  id={input.name}
+                                  name={input.name}
+                                  isFullWidth
+                                  {...input}
+                                >
+                                  <option>Utah</option>
+                                  <option>Nevada</option>
+                                  <option>Idaho</option>
+                                  <option>Arizona</option>
+                                </Select>
+                              </Control>
+                            </FormControl>
+                          )}
+                        </Field>
 
-                      <Field name="loanAmount">
-                        {({ input }) => (
-                          <FormControl>
-                            <Label htmlFor={input.name}>
-                              Target Loan Amount
-                            </Label>
-                            <Control>
-                              <Input
-                                id={input.name}
-                                name={input.name}
-                                required
-                                type="number"
-                                {...input}
-                              />
-                            </Control>
-                          </FormControl>
-                        )}
-                      </Field>
+                        <Field name="loanAmount">
+                          {({ input }) => (
+                            <FormControl>
+                              <Label htmlFor={input.name}>
+                                Target Loan Amount
+                              </Label>
+                              <Control>
+                                <Input
+                                  id={input.name}
+                                  name={input.name}
+                                  type="number"
+                                  {...input}
+                                />
+                              </Control>
+                            </FormControl>
+                          )}
+                        </Field>
 
-                      <Field name="estimatedCollateral">
-                        {({ input }) => (
-                          <FormControl>
-                            <Label htmlFor={input.name}>
-                              Estimated Collateral
-                            </Label>
-                            <Control>
-                              <Input
-                                id={input.name}
-                                name={input.name}
-                                required
-                                type="number"
-                                {...input}
-                              />
-                            </Control>
-                          </FormControl>
-                        )}
-                      </Field>
+                        <Field name="estimatedCollateral">
+                          {({ input }) => (
+                            <FormControl>
+                              <Label htmlFor={input.name}>
+                                Estimated Collateral
+                              </Label>
+                              <Control>
+                                <Input
+                                  id={input.name}
+                                  name={input.name}
+                                  type="number"
+                                  {...input}
+                                />
+                              </Control>
+                            </FormControl>
+                          )}
+                        </Field>
 
-                      <Field name="additionalInfo">
-                        {({ input }) => (
-                          <FormControl>
-                            <Label htmlFor={input.name}>
-                              Additional Information
-                            </Label>
-                            <Control>
-                              <TextArea
-                                id={input.name}
-                                name={input.name}
-                                {...input}
-                              />
-                            </Control>
-                          </FormControl>
-                        )}
-                      </Field>
+                        <Field name="additionalInfo">
+                          {({ input }) => (
+                            <FormControl>
+                              <Label htmlFor={input.name}>
+                                Additional Information
+                              </Label>
+                              <Control>
+                                <TextArea
+                                  id={input.name}
+                                  name={input.name}
+                                  {...input}
+                                />
+                              </Control>
+                            </FormControl>
+                          )}
+                        </Field>
 
-                      <div data-netlify-recaptcha="true" />
+                        <div data-netlify-recaptcha="true" />
 
-                      <br />
+                        <br />
 
-                      <FormControl>
-                        <Control style={{ textAlign: 'right' }}>
-                          <Button
-                            id="submit-btn"
-                            type="submit"
-                            style={{
-                              color: '#fff',
-                              backgroundColor: '#ff5722',
-                              borderColor: 'transparent',
-                            }}
-                          >
-                            Submit
-                          </Button>
-                        </Control>
-                      </FormControl>
-                    </form>
+                        <FormControl>
+                          <Control style={{ textAlign: 'right' }}>
+                            <Button
+                              id="submit-btn"
+                              type="submit"
+                              style={{
+                                color: '#fff',
+                                backgroundColor: '#ff5722',
+                                borderColor: 'transparent',
+                              }}
+                            >
+                              Submit
+                            </Button>
+                          </Control>
+                        </FormControl>
+                      </form>
+                    </>
                   )}
                 </Form>
               </Box>
