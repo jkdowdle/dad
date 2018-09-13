@@ -60,6 +60,7 @@ export default class ContactForm extends Component {
                         style={{ marginBottom: 0 }}
                         onSubmit={handleSubmit}
                       >
+                        <input name="name" hidden />
                         <Field name="name">
                           {({ input }) => (
                             <FormControl>
@@ -76,6 +77,7 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
+                        <input name="company" hidden />
                         <Field name="company">
                           {({ input }) => (
                             <FormControl>
@@ -92,6 +94,7 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
+                        <input name="phone" hidden />
                         <Field name="phone">
                           {({ input }) => (
                             <FormControl>
@@ -108,6 +111,7 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
+                        <input name="email" hidden />
                         <Field name="email">
                           {({ input }) => (
                             <FormControl>
@@ -124,6 +128,7 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
+                        <input name="city" hidden />
                         <Field name="city">
                           {({ input }) => (
                             <FormControl>
@@ -140,6 +145,7 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
+                        <input name="state" hidden />
                         <Field name="state">
                           {({ input }) => (
                             <FormControl>
@@ -161,6 +167,7 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
+                        <input name="loanAmount" hidden />
                         <Field name="loanAmount">
                           {({ input }) => (
                             <FormControl>
@@ -179,6 +186,7 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
+                        <input name="estimatedCollateral" hidden />
                         <Field name="estimatedCollateral">
                           {({ input }) => (
                             <FormControl>
@@ -197,6 +205,7 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
+                        <input name="additionalInfo" hidden />
                         <Field name="additionalInfo">
                           {({ input }) => (
                             <FormControl>
@@ -214,7 +223,7 @@ export default class ContactForm extends Component {
                           )}
                         </Field>
 
-                        <div data-netlify-recaptcha="true" />
+                        {/* <div data-netlify-rIecaptcha="true" /> */}
 
                         <br />
 
